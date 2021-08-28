@@ -26,49 +26,49 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./c
-          file: ./c/Dockerfile
+          context: ./dockerfile/c
+          file: ./dockerfile/c/Dockerfile
           push: true
           tags: ttbb/compile:c
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./c-ubuntu
-          file: ./c-ubuntu/Dockerfile
+          context: ./dockerfile/c-ubuntu
+          file: ./dockerfile/c-ubuntu/Dockerfile
           push: true
           tags: ttbb/compile:c-ubuntu
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./go
-          file: ./go/Dockerfile
+          context: ./dockerfile/go
+          file: ./dockerfile/go/Dockerfile
           push: true
           tags: ttbb/compile:go
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./jdk8
-          file: ./jdk8/Dockerfile
+          context: ./dockerfile/jdk8
+          file: ./dockerfile/jdk8/Dockerfile
           push: true
           tags: ttbb/compile:jdk8
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./jdk11
-          file: ./jdk11/Dockerfile
+          context: ./dockerfile/jdk11
+          file: ./dockerfile/jdk11/Dockerfile
           push: true
           tags: ttbb/compile:jdk11
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./jdk11-git
-          file: ./jdk11-git/Dockerfile
+          context: ./dockerfile/jdk11-git
+          file: ./dockerfile/jdk11-git/Dockerfile
           push: true
           tags: ttbb/compile:jdk11-git                    
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./jdk11-git-mvn
-          file: ./jdk11-git-mvn/Dockerfile
+          context: ./dockerfile/jdk11-git-mvn
+          file: ./dockerfile/jdk11-git-mvn/Dockerfile
           push: true
           tags: ttbb/compile:jdk11-git-mvn
