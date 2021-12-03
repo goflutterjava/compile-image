@@ -3,6 +3,6 @@ FROM ttbb/base:ubuntu
 
 LABEL maintainer="shoothzj@gmail.com"
 
-RUN apt-get update && \
+RUN apt-get -y update && \
 apt-get install -y git && \
 apt-get install -y cmake
