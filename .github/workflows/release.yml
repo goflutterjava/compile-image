@@ -18,57 +18,76 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Push to Docker Hub
+      - name: build compile c
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/c
           file: ./dockerfile/c/Dockerfile
           push: true
           tags: ttbb/compile:c
-      - name: Push to Docker Hub
+          platforms: linux/amd64,linux/arm64
+      - name: build compile c ubuntu
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/c-ubuntu
           file: ./dockerfile/c-ubuntu/Dockerfile
           push: true
           tags: ttbb/compile:c-ubuntu
-      - name: Push to Docker Hub
+          platforms: linux/amd64,linux/arm64
+      - name: build compile go
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/go
           file: ./dockerfile/go/Dockerfile
           push: true
           tags: ttbb/compile:go
-      - name: Push to Docker Hub
+          platforms: linux/amd64,linux/arm64
+      - name: build compile jdk8
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/jdk8
           file: ./dockerfile/jdk8/Dockerfile
           push: true
           tags: ttbb/compile:jdk8
-      - name: Push to Docker Hub
+          platforms: linux/amd64,linux/arm64
+      - name: build compile jdk11
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/jdk11
           file: ./dockerfile/jdk11/Dockerfile
           push: true
           tags: ttbb/compile:jdk11
-      - name: Push to Docker Hub
+          platforms: linux/amd64,linux/arm64
+      - name: build compile jdk11 git
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/jdk11-git
           file: ./dockerfile/jdk11-git/Dockerfile
           push: true
-          tags: ttbb/compile:jdk11-git                    
-      - name: Push to Docker Hub
+          tags: ttbb/compile:jdk11-git
+          platforms: linux/amd64,linux/arm64                    
+      - name: build compile jdk11 git mvn
         uses: docker/build-push-action@v2
         with:
           context: ./dockerfile/jdk11-git-mvn
           file: ./dockerfile/jdk11-git-mvn/Dockerfile
           push: true
           tags: ttbb/compile:jdk11-git-mvn
+          platforms: linux/amd64,linux/arm64
+      - name: build compile jdk17
+        uses: docker/build-push-action@v2
+        with:
+          context: ./dockerfile/jdk17
+          file: ./dockerfile/jdk17/Dockerfile
+          push: true
+          tags: ttbb/compile:jdk17
+          platforms: linux/amd64,linux/arm64
